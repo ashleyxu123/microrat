@@ -11,9 +11,11 @@ interface Props {
 	description?: string;
 	/** A full Tailwind background class, e.g. "bg-brand" or "bg-stone-100". */
 	bgColor?: string;
+    /** Boolean to optionally show header. Defaults to True */
+    showHeader?: boolean;
 }
 
-const { title = SITE_TITLE, description = SITE_DESCRIPTION, bgColor = 'bg-bg' } = Astro.props;
+const { title = SITE_TITLE, description = SITE_DESCRIPTION, bgColor = 'bg-bg', showHeader = true } = Astro.props;
 ---
 
 <!doctype html>
@@ -23,7 +25,7 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION, bgColor = 'bg-bg' } 
 	</head>
 	<!-- pb-28 leaves room at the end of the page so the fixed footer doesn't cover the last content -->
 	<body class:list={[bgColor, 'pb-28 text-slate-900']}>
-		<Header />
+		{showHeader && <Header />}
 		<slot />
 		<Footer />
 	</body>

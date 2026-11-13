@@ -1,13 +1,18 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import { Image } from 'astro:assets';
-import heroPhoto from '../assets/background.png';
-import heroPhotoDark from '../assets/background-dark.png';
-import heroPhotoDark2 from '../assets/background-dark-2.png';
+import heroPhoto from '../assets/background-raw.png';
+import heroPhotoDark from '../assets/background-raw-dark.png';
+import spiralLogoName from '../assets/logo-name.png';
+import spiralLogoNameDark from '../assets/logo-name-dark.png';
+
+const logoStyle = "h-70 w-auto transition-transform duration-700 group-hover:rotate-50 group-focus-within:rotate-50"
+const logoLightStyle = logoStyle + " dark:hidden"
+const logoDarkStyle = logoStyle + " hidden dark:block"
 
 ---
 
-<PageLayout>
+<PageLayout showHeader={false}>
 	<section class="relative isolate h-screen">
 		<Image
 			src={heroPhoto}
@@ -17,12 +22,29 @@ import heroPhotoDark2 from '../assets/background-dark-2.png';
 			layout="full-width"
 		/>
 		<Image
-			src={heroPhotoDark2}
+			src={heroPhotoDark}
 			alt=""
 			class="absolute inset-0 -z-10 hidden h-full w-full object-cover object-top dark:block"
 			loading="eager"
 			layout="full-width"
 		/>
+
+		<nav
+			aria-label="Main"
+			class="group absolute top-[35%] left-[50%] -translate-x-1/2 -translate-y-1/2"
+		>
+			<button type="button" aria-label="Open menu" class="block cursor-pointer">
+				<Image src={spiralLogoName} alt="" width={320} class={logoLightStyle} />
+				<Image src={spiralLogoNameDark} alt="" width={320} class={logoDarkStyle} />
+			</button>
+
+			<ul class="invisible absolute top-full left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 pt-2 opacity-0 transition-[opacity,visibility] duration-500 ease-out group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+				<li><a href="/being" class="text-xl text-brand">being</a></li>
+				<li><a href="/thinking" class="text-xl text-brand">thinking</a></li>
+				<li><a href="/capturing" class="text-xl text-brand">capturing</a></li>
+				<li><a href="/making" class="text-xl text-brand">making</a></li>
+			</ul>
+		</nav>
 	</section>
 
 	<main class="mx-auto max-w-3xl px-4 py-16">
