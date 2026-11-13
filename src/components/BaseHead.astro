@@ -17,6 +17,21 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<!-- Apply the saved theme before the page paints, so dark mode doesn't flash light first.
+     With no saved choice, follow the visitor's system setting. -->
+<script is:inline>
+	(() => {
+		let saved = null;
+		try {
+			saved = localStorage.getItem('theme');
+		} catch {}
+		const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+		if (saved === 'dark' || (saved === null && prefersDark)) {
+			document.documentElement.classList.add('dark');
+		}
+	})();
+</script>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
 

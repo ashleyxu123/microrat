@@ -1,20 +1,21 @@
 ---
 import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE } from '../consts';
 import spiralLogo from '../assets/logo.png';
+import spiralLogoDark from '../assets/logo-dark.png';
 import { Image } from 'astro:assets';
 ---
 
 <header class="px-4">
 	<nav class="flex">
-		<div class="flex w-full gap-2">
+		<div class="fixed z-10 flex w-full gap-2">
 			<HeaderLink href="/about" class="flex-1 text-center">me</HeaderLink>
-			<HeaderLink href="/blog" class="flex-1 text-center">thinking</HeaderLink>
+			<HeaderLink href="/thinking" class="flex-1 text-center">thinking</HeaderLink>
 			<HeaderLink href="/" class="flex-1 text-center">
-				<Image src={spiralLogo} alt="home" class="inline-block h-6 w-auto" />
+				<Image src={spiralLogo} alt="home" class="inline-block h-6 w-auto dark:hidden" />
+				<Image src={spiralLogoDark} alt="home" class="hidden h-6 w-auto dark:inline-block" />
 			</HeaderLink>
-			<HeaderLink href="/blog" class="flex-1 text-center">pics</HeaderLink>
-			<HeaderLink href="/blog" class="flex-1 text-center">art</HeaderLink>
+			<HeaderLink href="/pics" class="flex-1 text-center">pics</HeaderLink>
+			<HeaderLink href="/art" class="flex-1 text-center">art</HeaderLink>
 		</div>
 		<!-- <div class="social-links">
 			<a href="https://m.webtoo.ls/@astro" target="_blank">

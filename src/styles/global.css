@@ -5,9 +5,36 @@
    --color-accent -> text-accent, bg-accent, border-accent, ...
    --font-sans    -> the default font everywhere (font-sans) */
 @theme {
-	--font-sans: "Atkinson", ui-sans-serif, system-ui, sans-serif;
+	--font-display: "CurlyStory", serif;
+	--font-sans: "BigBird", ui-sans-serif, system-ui, sans-serif;
 	--color-brand: #ece7d5;
 	--color-bg: #a2a158;
+}
+
+/* Dark mode is on when <html> has the "dark" class (toggled by the footer button).
+   This makes dark: classes follow that class instead of the system setting. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Dark mode color values. text-brand, bg-bg, etc. switch automatically. */
+.dark {
+	--color-brand: #87080a;
+	--color-bg: #201612;
+}
+
+@font-face {
+	font-family: "CurlyStory";
+	src: url("/fonts/CurlyStoryRegular.woff") format("woff");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "BigBird";
+	src: url("/fonts/TAYBigBirdRegular.woff") format("woff");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {

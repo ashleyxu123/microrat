@@ -1,0 +1,30 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+interface Props {
+	/** Browser tab title. Defaults to the site title. */
+	title?: string;
+	/** Description for search engines and link previews. */
+	description?: string;
+	/** A full Tailwind background class, e.g. "bg-brand" or "bg-stone-100". */
+	bgColor?: string;
+}
+
+const { title = SITE_TITLE, description = SITE_DESCRIPTION, bgColor = 'bg-bg' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+	<!-- pb-28 leaves room at the end of the page so the fixed footer doesn't cover the last content -->
+	<body class:list={[bgColor, 'pb-28 text-slate-900']}>
+		<Header />
+		<slot />
+		<Footer />
+	</body>
+</html>

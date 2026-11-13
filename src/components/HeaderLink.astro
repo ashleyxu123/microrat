@@ -7,6 +7,9 @@ const { href, class: className, ...props } = Astro.props;
 const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
 const subpath = pathname.match(/[^\/]+/g);
 const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
+
+const isHome = href === "/";
+const showDot = isActive && !isHome;
 ---
 
 <a
@@ -20,7 +23,7 @@ const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
 	<span
 		class:list={[
 			'relative py-4 after:absolute after:bottom-0 after:left-1/2 after:size-1.5 after:-translate-x-1/2 after:rounded-full',
-			isActive ? 'after:bg-brand' : 'group-hover:after:bg-brand',
+			showDot ? 'after:bg-brand' : 'group-hover:after:bg-brand',
 		]}
 	>
 		<slot />

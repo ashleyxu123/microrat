@@ -1,36 +1,31 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import PageLayout from '../layouts/PageLayout.astro';
 import { Image } from 'astro:assets';
 import heroPhoto from '../assets/background.png';
-
-// Everything between the --- fences is TypeScript and runs at build time.
+import heroPhotoDark from '../assets/background-dark.png';
+import heroPhotoDark2 from '../assets/background-dark-2.png';
 
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body class="bg-bg text-slate-900">
-		<!-- Hero: exactly one screen tall, photo behind the header -->
-		<section class="relative isolate h-screen">
-			<Image
-				src={heroPhoto}
-				alt=""
-				class="absolute inset-0 -z-10 h-full w-full object-cover object-top"
-				loading="eager"
-				layout="full-width"
-			/>
-			<Header />
-		</section>
+<PageLayout>
+	<section class="relative isolate h-screen">
+		<Image
+			src={heroPhoto}
+			alt=""
+			class="absolute inset-0 -z-10 h-full w-full object-cover object-top dark:hidden"
+			loading="eager"
+			layout="full-width"
+		/>
+		<Image
+			src={heroPhotoDark2}
+			alt=""
+			class="absolute inset-0 -z-10 hidden h-full w-full object-cover object-top dark:block"
+			loading="eager"
+			layout="full-width"
+		/>
+	</section>
 
-		<!-- Content below the photo, on the page background color -->
-		<main class="mx-auto max-w-3xl px-4 py-16">
-			<h1 class="text-4xl text-brand">hi im ashley</h1>
-		</main>
-	</body>
-</html>
+	<main class="mx-auto max-w-3xl px-4 py-16">
+		<h1 class="text-4xl text-brand">hi im ashley</h1>
+	</main>
+</PageLayout>
