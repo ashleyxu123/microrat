@@ -3,10 +3,10 @@ import { Icon } from 'astro-icon/components';
 const today = new Date();
 ---
 
-<footer class="fixed inset-x-0 bottom-0 z-10 px-4 py-12 text-center text-brand">
+<footer class="fixed inset-x-0 bottom-0 z-10 px-4 py-15 text-center text-brand mb-13">
 	{today.getFullYear()}.{today.getMonth() + 1}.{today.getDate()}
 	<div>
-		v.I
+		<a href="/" class="inline-block text-brand transition-transform duration-300 hover:scale-120 focus-visible:scale-120">v.i</a>
 	</div>
 	<div class="mt-1 flex justify-center gap-4">
 		<button

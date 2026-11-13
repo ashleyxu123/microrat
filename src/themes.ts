@@ -1,12 +1,12 @@
 import type { ImageMetadata } from 'astro';
-import spiralLogo from './assets/logo.png';
-import spiralLogoDark from './assets/logo-dark.png';
-import spiralLogoBeingLight from './assets/logo-being-light.png'
-import spiralLogoBeingDark from './assets/logo-being-dark.png'
-import spiralLogoCapturingLight from './assets/logo-capturing-light.png'
-import spiralLogoCapturingDark from './assets/logo-capturing-dark.png'
-import spiralLogoMakingLight from './assets/logo-making-light.png'
-import spiralLogoMakingDark from './assets/logo-making-dark.png'
+import spiralLogo from './assets/logos/logo.png';
+import spiralLogoDark from './assets/logos/logo-dark.png';
+import spiralLogoBeingLight from './assets/logos/logo-being-light.png'
+import spiralLogoBeingDark from './assets/logos/logo-being-dark.png'
+import spiralLogoCapturingLight from './assets/logos/logo-capturing-light.png'
+import spiralLogoCapturingDark from './assets/logos/logo-capturing-dark.png'
+import spiralLogoMakingLight from './assets/logos/logo-making-light.png'
+import spiralLogoMakingDark from './assets/logos/logo-making-dark.png'
 
 /**
  * Logo variations. Each one has a light-mode and a dark-mode image.

@@ -3,8 +3,9 @@ import PageLayout from '../layouts/PageLayout.astro';
 import { Image } from 'astro:assets';
 import heroPhoto from '../assets/background-raw.png';
 import heroPhotoDark from '../assets/background-raw-dark.png';
-import spiralLogoName from '../assets/logo-name.png';
-import spiralLogoNameDark from '../assets/logo-name-dark.png';
+import spiralLogoName from '../assets/logos/logo-name.png';
+import spiralLogoNameDark from '../assets/logos/logo-name-dark.png';
+import profilePhoto from '../assets/homepage-pic.png'
 import HomeLink from '../components/HomeLink.astro';
 import { NAV_LINKS } from '../consts';
 
@@ -51,7 +52,37 @@ const logoDarkStyle = logoStyle + " hidden dark:block"
 		</nav>
 	</section>
 
-	<main class="mx-auto max-w-3xl px-4 py-16">
-		<h1 class="text-4xl text-brand">hi im ashley</h1>
+	<main class="mx-auto max-w-3xl px-4 py-25">
+		<h1 class="text-4xl text-brand font-display pt-20">hi, im ashley :)</h1>
+		<Image
+			src={profilePhoto}
+			alt=""
+			class="h-full w-full py-8 object-cover object-top"
+			loading="eager"
+			layout="full-width"
+		/>
+		<div>
+			<ul class="mx-auto flex w-full max-w-md flex-col gap-2 pt-8 text-3xl text-brand">
+				{
+					NAV_LINKS.map((link) => {
+						// "i. being" -> numeral "i", name "being"
+						const [numeral, name] = link.label.split('. ');
+						return (
+							<li>
+								<a href={link.href} class="flex items-baseline gap-2 pb-4 transition-transform duration-300 hover:scale-105 focus-visible:scale-105">
+									<span>{name}</span>
+									{/* More dots than will ever fit; the overflow is clipped so they fill exactly the gap.
+									    Right-to-left so the dots line up against the numerals and clip on the name side. */}
+									<span aria-hidden="true" class="flex-1 overflow-hidden whitespace-nowrap [direction:rtl]">
+										{'. '.repeat(100)}
+									</span>
+									<span>{numeral}</span>
+								</a>
+							</li>
+						);
+					})
+				}
+			</ul>
+		</div>
 	</main>
 </PageLayout>

@@ -37,7 +37,7 @@ const logo: LogoVariant = logoVariant ?? (theme ? THEMES[theme].logo : 'main');
 	<head>
 		<BaseHead title={title} description={description} />
 	</head>
-	<body class:list={[bgColor, 'pb-28 text-BigBird text-alt', theme]}>
+	<body class:list={[bgColor, 'pb-40 text-BigBird text-alt', theme]}>
 		{showHeader && <Header logoVariant={logo} />}
 		<slot />
 		<Footer />
