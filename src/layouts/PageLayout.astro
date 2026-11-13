@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { THEMES, type LogoVariant, type ThemeName } from '../themes';
 
 interface Props {
 	/** Browser tab title. Defaults to the site title. */
@@ -13,9 +14,22 @@ interface Props {
 	bgColor?: string;
     /** Boolean to optionally show header. Defaults to True */
     showHeader?: boolean;
+	/** Page color theme (a class on <body>), e.g. "theme-being". Registered in src/themes.ts. */
+	theme?: ThemeName;
+	/** Logo variation for the home link. Overrides the theme's logo. Defaults to "main". */
+	logoVariant?: LogoVariant;
 }
 
-const { title = SITE_TITLE, description = SITE_DESCRIPTION, bgColor = 'bg-bg', showHeader = true } = Astro.props;
+const {
+	title = SITE_TITLE,
+	description = SITE_DESCRIPTION,
+	bgColor = 'bg-bg',
+	showHeader = true,
+	theme,
+	logoVariant,
+} = Astro.props;
+
+const logo: LogoVariant = logoVariant ?? (theme ? THEMES[theme].logo : 'main');
 ---
 
 <!doctype html>
@@ -23,9 +37,8 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION, bgColor = 'bg-bg', s
 	<head>
 		<BaseHead title={title} description={description} />
 	</head>
-	<!-- pb-28 leaves room at the end of the page so the fixed footer doesn't cover the last content -->
-	<body class:list={[bgColor, 'pb-28 text-slate-900']}>
-		{showHeader && <Header />}
+	<body class:list={[bgColor, 'pb-28 text-BigBird text-alt', theme]}>
+		{showHeader && <Header logoVariant={logo} />}
 		<slot />
 		<Footer />
 	</body>

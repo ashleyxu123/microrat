@@ -14,10 +14,10 @@ const today = new Date();
 			id="theme-toggle"
 			aria-label="Toggle dark mode"
 			aria-pressed="false"
-			class="cursor-pointer text-brand"
+			class="group cursor-pointer text-brand"
 		>
-			<Icon name="lucide:sun-medium" class="size-8 dark:hidden" />
-			<Icon name="lucide:moon-star" class="hidden size-8 dark:block" />
+			<Icon name="lucide:sun-medium" class="size-8 dark:hidden transition-transform duration-300 group-hover:scale-120 group-focus-visible:scale-120" />
+			<Icon name="lucide:moon-star" class="hidden size-8 dark:block transition-transform duration-300 group-hover:scale-120 group-focus-visible:scale-120" />
 		</button>
 	</div>
 </footer>

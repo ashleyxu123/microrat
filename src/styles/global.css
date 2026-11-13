@@ -7,10 +7,10 @@
 @theme {
 	--font-display: "CurlyStory", serif;
 	--font-sans: "BigBird", ui-sans-serif, system-ui, sans-serif;
+	--font-header: "FableDust", serif;
 	--color-brand: #ece7d5;
 	--color-bg: #a2a158;
-	--color-highlight: #eac388;
-	--color-alt: #a2a384
+	--color-alt: #ece7d5
 }
 
 /* Dark mode is on when <html> has the "dark" class (toggled by the footer button).
@@ -21,7 +21,15 @@
 .dark {
 	--color-brand: #dd423e;
 	--color-bg: #3f2c26;
-	--color-alt: #a2a384
+	--color-alt: #dd423e;
+}
+
+@font-face {
+	font-family: "FableDust";
+	src: url("/fonts/FableDust.woff") format("woff");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {

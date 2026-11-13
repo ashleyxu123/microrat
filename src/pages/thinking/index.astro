@@ -1,10 +1,5 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
 import Layout from '../../layouts/PageLayout.astro';
 
 
@@ -15,9 +10,13 @@ const posts = (await getCollection('blog')).sort(
 
 <Layout
 	title="Thinking"
-	description="Lorem ipsum dolor sit amet"
+	description="a collection of my thoughts"
 >
-
+	<main class="mx-auto max-w-5xl px-4 py-12">
+		<div class="flex w-full items-center justify-center text-brand">
+			<h1 class="font-header text-6xl">ii. THINKING</h1>
+		</div>
+	</main>
 </Layout>
 <!-- <!doctype html>
 <html lang="en">
