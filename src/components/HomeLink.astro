@@ -1,0 +1,23 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { Image } from 'astro:assets';
+import spiralLogo from '../assets/logo.png';
+import spiralLogoDark from '../assets/logo-dark.png';
+
+type Props = HTMLAttributes<'a'>;
+
+const { class: className, ...props } = Astro.props;
+
+const logoStyle =
+	'h-6 w-auto transition-transform duration-700 group-hover:rotate-50 group-focus-visible:rotate-50';
+---
+
+<a href="/" aria-label="home" class:list={['group inline-block px-2 py-10', className]} {...props}>
+	<Image src={spiralLogo} alt="" width={48} class:list={[logoStyle, 'inline-block dark:hidden']} />
+	<Image
+		src={spiralLogoDark}
+		alt=""
+		width={48}
+		class:list={[logoStyle, 'hidden dark:inline-block']}
+	/>
+</a>

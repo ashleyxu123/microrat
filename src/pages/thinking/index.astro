@@ -5,13 +5,21 @@ import Footer from '../../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
+import Layout from '../../layouts/PageLayout.astro';
+
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
 
-<!doctype html>
+<Layout
+	title="Thinking"
+	description="Lorem ipsum dolor sit amet"
+>
+
+</Layout>
+<!-- <!doctype html>
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
@@ -19,7 +27,6 @@ const posts = (await getCollection('blog')).sort(
 	<body class="text-slate-800">
 		<Header />
 		<main class="mx-auto max-w-5xl px-4 py-12">
-			<!-- 1 column on phones, 2 on wider screens; the newest post spans both -->
 			<ul class="grid gap-8 sm:grid-cols-2">
 				{
 					posts.map((post, i) => (
@@ -51,4 +58,4 @@ const posts = (await getCollection('blog')).sort(
 		</main>
 		<Footer />
 	</body>
-</html>
+</html> -->

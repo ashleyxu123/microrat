@@ -9,6 +9,8 @@
 	--font-sans: "BigBird", ui-sans-serif, system-ui, sans-serif;
 	--color-brand: #ece7d5;
 	--color-bg: #a2a158;
+	--color-highlight: #eac388;
+	--color-alt: #a2a384
 }
 
 /* Dark mode is on when <html> has the "dark" class (toggled by the footer button).
@@ -17,8 +19,9 @@
 
 /* Dark mode color values. text-brand, bg-bg, etc. switch automatically. */
 .dark {
-	--color-brand: #87080a;
-	--color-bg: #201612;
+	--color-brand: #dd423e;
+	--color-bg: #3f2c26;
+	--color-alt: #a2a384
 }
 
 @font-face {

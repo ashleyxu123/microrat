@@ -5,6 +5,8 @@ import heroPhoto from '../assets/background-raw.png';
 import heroPhotoDark from '../assets/background-raw-dark.png';
 import spiralLogoName from '../assets/logo-name.png';
 import spiralLogoNameDark from '../assets/logo-name-dark.png';
+import HomeLink from '../components/HomeLink.astro';
+import { NAV_LINKS } from '../consts';
 
 const logoStyle = "h-70 w-auto transition-transform duration-700 group-hover:rotate-50 group-focus-within:rotate-50"
 const logoLightStyle = logoStyle + " dark:hidden"
@@ -13,7 +15,10 @@ const logoDarkStyle = logoStyle + " hidden dark:block"
 ---
 
 <PageLayout showHeader={false}>
+	<HomeLink class="fixed top-0 left-4 z-10" />
+
 	<section class="relative isolate h-screen">
+
 		<Image
 			src={heroPhoto}
 			alt=""
@@ -31,7 +36,7 @@ const logoDarkStyle = logoStyle + " hidden dark:block"
 
 		<nav
 			aria-label="Main"
-			class="group absolute top-[35%] left-[50%] -translate-x-1/2 -translate-y-1/2"
+			class="group absolute top-[40%] left-[50%] -translate-x-1/2 -translate-y-1/2"
 		>
 			<button type="button" aria-label="Open menu" class="block cursor-pointer">
 				<Image src={spiralLogoName} alt="" width={320} class={logoLightStyle} />
@@ -39,10 +44,9 @@ const logoDarkStyle = logoStyle + " hidden dark:block"
 			</button>
 
 			<ul class="invisible absolute top-full left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 pt-2 opacity-0 transition-[opacity,visibility] duration-500 ease-out group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-				<li><a href="/being" class="text-xl text-brand">being</a></li>
-				<li><a href="/thinking" class="text-xl text-brand">thinking</a></li>
-				<li><a href="/capturing" class="text-xl text-brand">capturing</a></li>
-				<li><a href="/making" class="text-xl text-brand">making</a></li>
+				{NAV_LINKS.map((link) => (
+					<li><a href={link.href} class="text-xl text-brand">{link.label}</a></li>
+				))}
 			</ul>
 		</nav>
 	</section>
